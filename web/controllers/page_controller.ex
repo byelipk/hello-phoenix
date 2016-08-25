@@ -3,12 +3,14 @@ require IEx
 defmodule HelloPhoenix.PageController do
   use HelloPhoenix.Web, :controller
 
-  plug :show_layout
-
   def index(conn, _params) do
     conn
       |> show_layout
       |> render("index.html")
+  end
+
+  def test(conn, _) do
+    render conn, "test.html"
   end
 
   defp show_layout(conn), do: conn
