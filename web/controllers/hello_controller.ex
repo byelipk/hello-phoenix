@@ -5,7 +5,10 @@ defmodule HelloPhoenix.HelloController do
   plug :put_headers, %{ content_encoding: "gzip", cache_control: "max-age=3600", hacked: "questionable" }
 
   def index(conn, _params) do
-    render conn, "index.html"
+    conn
+      |> put_flash(:info, "Welcome to Phoenix! FLASH")
+      |> put_flash(:error, "We have an error to show you")
+      |> render("index.html")
   end
 
   def show(conn, %{"messenger" => messenger}) do
