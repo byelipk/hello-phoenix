@@ -12,9 +12,9 @@ defmodule HelloPhoenix.HelloController do
       |> render("index.html")
   end
 
-  def show(conn, %{"messenger" => messenger}) do
+  def show(conn, %{"id" => id}) do
     conn
-      |> assign(:messenger, messenger)
+      |> assign(:messenger, id)
       |> render("show.html")
   end
 
