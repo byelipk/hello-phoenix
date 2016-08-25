@@ -12,7 +12,8 @@ defmodule HelloPhoenix.HelloController do
   end
 
   def show(conn, %{"messenger" => messenger}) do
-    render conn, "show.html", messenger: messenger
+    conn
+      |> render("show.html", messenger: messenger)
   end
 
   defp put_headers(conn, key_values) do
