@@ -3,6 +3,7 @@ defmodule HelloPhoenix.HelloController do
   use HelloPhoenix.Web, :controller
 
   plug :put_headers, %{ content_encoding: "gzip", cache_control: "max-age=3600", hacked: "questionable" }
+  plug :assign_welcome_message, "Welcome Back!" when action in [:show]
 
   def index(conn, _params) do
     conn
@@ -22,5 +23,7 @@ defmodule HelloPhoenix.HelloController do
       Plug.Conn.put_resp_header(conn, to_string(k), v)
     end
   end
+
+  defp assign_welcome_message(conn, msg), do: assign(conn, :welcome, msg)
 
 end
