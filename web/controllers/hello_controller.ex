@@ -18,6 +18,12 @@ defmodule HelloPhoenix.HelloController do
       |> render("show.html")
   end
 
+  def delete(conn, _params) do
+    conn
+      |> put_resp_content_type("text/plain")
+      |> send_resp(200, "")
+  end
+
   defp put_headers(conn, key_values) do
     Enum.reduce key_values, conn, fn {k, v}, conn ->
       Plug.Conn.put_resp_header(conn, to_string(k), v)
